@@ -1,15 +1,14 @@
 <template>
-  <Modal />
+  <User />
 </template>
 
 <script>
-// import User from './views/User.vue'
-import Modal from './components/Modal.vue'
+import User from './views/User.vue'
 
 export default {
   name: 'App',
   components: {
-    Modal
+    User
   }
 }
 </script>

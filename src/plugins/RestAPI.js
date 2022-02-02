@@ -5,8 +5,12 @@ export default {
     return axios.get(APIURL + "/users?page=2");
   },
 
+  getSingleUser(id) {
+    return axios.get(APIURL + `/users/${id}`)
+  },
+
   UpdateUser(id, req) {
-    return axios.put(APIURL + `/users/${id}`, req);
+    return axios.patch(APIURL + `/users/${id}`, req);
   },
 
   DeleteUser(id) {
