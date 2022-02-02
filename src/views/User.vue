@@ -27,7 +27,7 @@
               <td>{{ user.last_name }}</td>
               <td>{{ user.email }}</td>
               <td>
-                <button style="margin-right: 20px" @click="updateUser(user)">
+                <button style="margin-right: 20px" @click="showModal">
                   Edit
                 </button>
                 <button @click="deleteUser(user)">Delete</button>
@@ -35,6 +35,10 @@
             </tr>
           </tbody>
         </table>
+        <Modal 
+          v-show="isModalVisible"
+          @click="closeModal"
+        />
       </div>
     </div>
   </div>
@@ -42,13 +46,18 @@
 
 <script>
 import RestAPI from "@/plugins/RestAPI";
+import Modal from '../components/Modal.vue';
 export default {
   name: "User",
+  components: {
+    Modal
+  },
   data() {
     return {
       title: "User Information",
       users: [],
-      search:''
+      search:'',
+      isModalVisible: false,
     };
   },
   mounted() {
@@ -88,6 +97,12 @@ export default {
       //     console.log('DELETE ERROR: ', err);
       // });
     },
+    showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      }
   },
   computed: {
     filteredUsers(){
@@ -124,5 +139,8 @@ tr > td.avatar {
 }
 input {
   width: 80%;
+}
+* {
+  font-family: 'Times New Roman', Times, serif;
 }
 </style>
